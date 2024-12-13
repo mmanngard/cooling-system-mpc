@@ -12,7 +12,7 @@ To design a near-optimal control strategy, we employ a Model-Predictive Control 
 This section outlines a simplified first-principles model of the CHP cooling system. The radiator dynamics have been neglected, and heat storage in the components has been significantly simplified to create a more manageable model suitable for demonstrating the MPC control strategy.
 
 ### Radiator
-The radiator extracts heat form the system and is assumed to be controlled with signal $`u_\mathrm{R}(t)\in[0,1]`$ sich that $`\dot{Q}_R = Q_{\mathrm{R,max}}u_R(t)`$ and the dynamics is given by
+The radiator extracts heat form the system and is assumed to be controlled with signal $`u_\mathrm{R}(t)\in[0,1]`$ such that $`\dot{Q}_R = Q_{\mathrm{R,max}}u_R(t)`$ and the dynamics is given by
 
 $`
 c_\mathrm{p}M_\mathrm{R}\dot{T}_\mathrm{R} = c_\mathrm{p}\dot{m}T - c_\mathrm{p}\dot{m}T_\mathrm{R} - \dot{Q}_\mathrm{R},
@@ -21,7 +21,7 @@ c_\mathrm{p}M_\mathrm{R}\dot{T}_\mathrm{R} = c_\mathrm{p}\dot{m}T - c_\mathrm{p}
 where $M_\mathrm{R}$ represents the internal mass to be heated in the radiator.
 
 ### Engine
-The engine is a source of heat to the system. The provided heat $\dot{Q}_\mathrm{E}$ is considered an unmeasured (unknown) disturbance. The dunamics of the engine component is
+The engine is a source of heat to the system. The provided heat $\dot{Q}_\mathrm{E}$ is considered to be constant and known. The dynamics of the engine component is
 
 $`
 c_\mathrm{p}M_\mathrm{E}\dot{T}_\mathrm{E} = c_\mathrm{p}\dot{m}T_\mathrm{R} - c_\mathrm{p}\dot{m}T_\mathrm{E} + \dot{Q}_\mathrm{E},
@@ -95,7 +95,7 @@ M_\mathrm{MIX}\dot{T} &=
 `$
 
 ### Combined state-space model
-Due to the switching behaviour of the mixing node (caused by the valve), the system dynamics changes depending on if the switching valve is open or closed. This results in a switching state-space system
+Due to the switching behaviour of the mixing node (caused by the valve), the system dynamics changes depending on if the valve is open or closed. This results in a switching state-space system
 
 $`
 \dot{x} =
@@ -169,7 +169,7 @@ F &=
 \end{align*}
 `$
 
-Furthermore, not the the effect of the recirculation valve $u_V$ only affects the dynamics of the system. Thus the model can be further simplified as
+Furthermore, note that the effect of the recirculation valve $u_V$ only switches the dynamics of the system. Thus the model can be further simplified as
 
 $`
 \dot{x} =
@@ -193,15 +193,23 @@ B_\mathrm{R} =
 `$
 
 ### Discrete-time state space
-A discrete-time state-space model can be obtained, for example, by ZOH, resulting in the discrete-time switching state-space system $(A_{i,\mathrm{d}}, B_{\mathrm{d}}, F_{\mathrm{d}})$
+A discrete-time state-space model can be obtained, for example, by zero-order hold ([ZOH](https://en.wikipedia.org/wiki/Discretization#Derivation)) sampling, resulting in the discrete-time switching state-space system $(A_{i,\mathrm{d}}, B_{\mathrm{d}}, F_{\mathrm{d}})$
 
 $`
 x(k+1) =
 \begin{cases}
-    A_{\mathrm{d},1}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), & \text{if }~u_\mathrm{V}(k) = 1, \\
-    A_{\mathrm{d},0}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), & \text{otherwise.}
+    A_{\mathrm{d},1}x(k) + B_{\mathrm{d},1}u_\mathrm{R}(k) + F_{\mathrm{d},1}d(k), & \text{if }~u_\mathrm{V}(k) = 1, \\
+    A_{\mathrm{d},0}x(k) + B_{\mathrm{d},0}u_\mathrm{R}(k) + F_{\mathrm{d},0}d(k), & \text{otherwise.}
 \end{cases}
 `$
+
+with
+
+$$
+A_{\mathrm{d},i} = \mathrm{e}^{A_i\Delta T},~B_{\mathrm{d},i} = A_{i}^{-1}(A_{i,\mathrm{d}} - I)B.
+$$
+
+> :warning: **NOTE** *Verify this!*   
 
 ## Optimization problem
 Ideally we would formulate the MPC optimization something like the following:
@@ -248,7 +256,7 @@ $`
 \end{align*}
 `$
 
-Likewise, if $u_\mathrm{V}(k) = 0$
+Likewise, if $u_\mathrm{V}(k) = 0$,
 
 $`
 \begin{align*}
