@@ -208,7 +208,7 @@ Ideally we would formulate the MPC optimization something like the following:
 
 $`
 \begin{align*}
-&\underset{x\in\mathbb{R}^{N},e\in\mathbb{R}^{M},u_\mathrm{R}(k)\in\mathbb{R},~u_\mathrm{V}(k)\in \{0, 1\}}{\text{minimize}} \quad 
+&\underset{x\in\mathbb{R}^{N},e\in\mathbb{R}^{N},u_\mathrm{R}(k)\in\mathbb{R},~u_\mathrm{V}(k)\in \{0, 1\}}{\text{minimize}} \quad 
 \sum_{k=0}^{N-1} e(k)^TQ_{e}^{-1}e(k) + \sum_{k=0}^{N-1} u_\mathrm{R}(k)^T Q_{u_\mathrm{R}}^{-1} u_\mathrm{R}(k)\\
 &\text{subject to} \\
 &x(k+1) = 
@@ -225,7 +225,7 @@ However, conventional solvers typically don't accept conditional statements as c
 
 $`
 \begin{align*}
-&\underset{x,x_0,x_1\in\mathbb{R}^{N},e\in\mathbb{R}^{M},u_\mathrm{R}(k)\in\mathbb{R},~u_\mathrm{V}(k)\in \{0, 1\}}{\text{minimize}} \quad 
+&\underset{x,x_0,x_1\in\mathbb{R}^{N},e\in\mathbb{R}^{N},u_\mathrm{R}(k)\in\mathbb{R},~u_\mathrm{V}(k)\in \{0, 1\}}{\text{minimize}} \quad 
 \sum_{k=0}^{N-1} e(k)^TQ_{e}^{-1}e(k) + \sum_{k=0}^{N-1} u_\mathrm{R}(k)^T Q_{u_\mathrm{R}}^{-1} u_\mathrm{R}(k)\\
 &\text{subject to} \\
 &x_0(k+1) = A_{\mathrm{d},0}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), &\quad k=0,1,...,N-1\\
