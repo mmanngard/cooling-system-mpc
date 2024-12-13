@@ -77,7 +77,7 @@ M_\mathrm{MIX}\dot{T} &= \dot{m}_\mathrm{R}T_\mathrm{R} + \dot{m}_\mathrm{in}T_\
 \end{align*}
 `$
 
-Note that, since `$\dot{m}_\mathrm{in} = \dot{m}_\mathrm{out}`$ (conservation of mass), this is equivalent to
+Note that, since $`\dot{m}_\mathrm{in} = \dot{m}_\mathrm{out}`$ (conservation of mass), this is equivalent to
 
 $`
 \begin{align*}
