@@ -264,3 +264,47 @@ $`
 &x_0(k+1) \leq x(k+1) \leq x_0(k) \implies x(k+1) = x_0(k+1). \\
 \end{align*}
 `$
+
+### Example parameters
+Example values for the parameters, known inputs, and setpoints.
+
+**Parameters:**
+- Mass-flow rate: $\dot{m}=30~\text{kg/s}$
+- Inlet temperature: $T_\mathrm{in} = 60~^\circ\text{C}$
+- Maximum radiator cooling power: $\dot{Q}_\mathrm{R, max} = 8 \times 10^6~\text{W}$
+- Masses are arbitarily set to: $M_\mathrm{E} = 2000~\text{kg}$, $M_\mathrm{MIX} = 20~\text{kg}$, $M_\mathrm{R} = 1000~\text{kg}$, $M_\mathrm{B} = 10 000~\text{kg}$
+
+**Known inputs:**
+- Engine heat power: $\dot{Q}_\mathrm{E} = 4.4 \times 10^6~\text{W}$,
+- Boiler heat power: $\dot{Q}_\mathrm{B} = 4.4 \times 10^6~\text{W}$,
+
+**Setpoints:**
+- Engine temperature (engine cooling water outlet): $T_\mathrm{E} = 95 \pm 5~^\circ\text{C}$
+- Temperature to district heating (engine cooling water outlet): $T_\mathrm{out} = 130 \pm 5~^\circ\text{C}$
+
+**Initial states**
+- $T_\mathrm{in}(0) = 60 ~^\circ\text{C}$
+- $T = 60 ~^\circ\text{C}$
+- $T_\mathrm{R} = 60 ~^\circ\text{C}$
+- $T_\mathrm{E} = 60 ~^\circ\text{C}$
+- $T_\mathrm{B} = 60 ~^\circ\text{C}$
+
+**Design choises** \
+The matrices $Q_e$ and $Q_{\mathrm{u}_\mathrm{R}}$ are design patameters for the user to determine. Typically, choises are
+- $Q_{\mathrm{u}_\mathrm{R}} = \sigma^2  I$, if we want the input signal to be zero-mean and have covariance $\sigma^2$.
+- Often one want the input to change smoothly, then onecould choose to constrain the first-order (or even second) difference $\Delta u(k) = u(k) - u(k-1)$ instead.
+
+If one want to control only a subset of the states, like in this example, one would define additional variables
+
+$z(k) = C x(k)$
+
+with (to control $T_\mathrm{E}$ and $T_\mathrm{B}$)
+
+$$
+C = \begin{bmatrix}
+0 &0 &0 &1 &0\\
+0 &0 &0 &0 &1
+\end{bmatrix},
+$$
+
+and minimize the error $e(k) = r(k) - z(k)$ instead.
