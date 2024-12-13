@@ -200,11 +200,12 @@ x(k+1) =
 \begin{cases}
     A_{\mathrm{d},1}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), & \text{if }~u_\mathrm{V}(k) = 1, \\
     A_{\mathrm{d},0}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), & \text{otherwise.}
-\end{cases} 
+\end{cases}
 `$
 
 ## Optimization problem
 Ideally we would formulate the MPC optimization something like the following:
+
 $`
 \begin{align*}
 &\underset{x\in\mathbb{R}^{N},e\in\mathbb{R}^{M},u_\mathrm{R}(k)\in\mathbb{R},~u_\mathrm{V}(k)\in \{0, 1\}}{\text{minimize}} \quad 
@@ -220,4 +221,38 @@ $`
 \end{align*}
 `$
 
-However, conventional solvers typically don't accept conditional statements as constraints. Thus, the conditional constraint is rewritten as
+However, conventional solvers typically don't accept conditional statements as constraints. Thus, the conditional constraint is rewritten using big-M reformulation as
+
+$`
+\begin{align*}
+&\underset{x\in\mathbb{R}^{N},e\in\mathbb{R}^{M},u_\mathrm{R}(k)\in\mathbb{R},~u_\mathrm{V}(k)\in \{0, 1\}}{\text{minimize}} \quad 
+\sum_{k=0}^{N-1} e(k)^TQ_{e}^{-1}e(k) + \sum_{k=0}^{N-1} u_\mathrm{R}(k)^T Q_{u_\mathrm{R}}^{-1} u_\mathrm{R}(k)\\
+&\text{subject to} \\
+&x_0(k+1) = A_{\mathrm{d},0}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), \\
+&x_1(k+1) = A_{\mathrm{d},1}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), \\
+&x_1(k+1) - x(k+1) \leq M(1 - u_\mathrm{V}(k)), \\
+&x(k+1) - x_1(k+1) \leq M(1 - u_\mathrm{V}(k)), \\
+&x_0(k+1) - x(k+1) \leq Mu_\mathrm{v}(k), \\
+&x(k+1) - x_0(k+1) \leq Mu_\mathrm{v}(k), \\
+&e(k) = r(k) - x(k), &\quad k=0,1,...,N-1\\
+& x(k) \in [l, u], &\quad k=0,1,...,N-1\\
+\end{align*}
+`$
+
+To verify that the two formulations are equivalent, note that, for big-enough $M>0$, if $u_\mathrm{V}(k) = 1$, we have
+
+$`
+\begin{align*}
+&x_1(k+1) \leq x(k+1) \leq x_1(k) \implies x(k+1) = x_1(k+1), \\
+&x_0(k+1) - M \leq x(k+1) \leq x_0(k+1) + M \implies \text{not active contraint}
+\end{align*}
+`$
+
+Likewise, if $u_\mathrm{V}(k) = 0$
+
+$`
+\begin{align*}
+&x_1(k+1) - M \leq x(k+1) \leq x_1(k) + M \implies \text{not active contraint}, \\
+&x_0(k+1) \leq x(k+1) \leq x_0(k) \implies x(k+1) = x_0(k+1). \\
+\end{align*}
+`$
