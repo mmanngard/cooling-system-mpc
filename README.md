@@ -221,8 +221,8 @@ $`
 &\text{subject to} \\
 &x(k+1) = 
 \begin{cases}
-    A_{\mathrm{d},1}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), & \text{if }~u_\mathrm{V}(k) = 1, \\
-    A_{\mathrm{d},0}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), & \text{otherwise.}
+    A_{\mathrm{d},1}x(k) + B_{\mathrm{d},1}u(k) + F_{\mathrm{d},1}d(k), & \text{if }~u_\mathrm{V}(k) = 1, \\
+    A_{\mathrm{d},0}x(k) + B_{\mathrm{d},0}u(k) + F_{\mathrm{d},0}d(k), & \text{otherwise.}
 \end{cases}, &\quad k=0,1,...,N-1 \\
 &e(k) = r(k) - x(k), &\quad k=0,1,...,N-1\\
 & x(k) \in [l, u], &\quad k=0,1,...,N-1\\
@@ -236,8 +236,8 @@ $`
 &\underset{x,x_0,x_1\in\mathbb{R}^{N},e\in\mathbb{R}^{N},u_\mathrm{R}(k)\in\mathbb{R},~u_\mathrm{V}(k)\in \{0, 1\}}{\text{minimize}} \quad 
 \sum_{k=0}^{N-1} e(k)^TQ_{e}^{-1}e(k) + \sum_{k=0}^{N-1} u_\mathrm{R}(k)^T Q_{u_\mathrm{R}}^{-1} u_\mathrm{R}(k)\\
 &\text{subject to} \\
-&x_0(k+1) = A_{\mathrm{d},0}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), &\quad k=0,1,...,N-1\\
-&x_1(k+1) = A_{\mathrm{d},1}x(k) + B_{\mathrm{d}}u(k) + F_{\mathrm{d}}d(k), &\quad k=0,1,...,N-1\\
+&x_0(k+1) = A_{\mathrm{d},0}x(k) + B_{\mathrm{d},0}u(k) + F_{\mathrm{d},0}d(k), &\quad k=0,1,...,N-1\\
+&x_1(k+1) = A_{\mathrm{d},1}x(k) + B_{\mathrm{d},1}u(k) + F_{\mathrm{d},1}d(k), &\quad k=0,1,...,N-1\\
 &x_1(k+1) - x(k+1) \leq M(1 - u_\mathrm{V}(k)), &\quad k=0,1,...,N-1\\
 &x(k+1) - x_1(k+1) \leq M(1 - u_\mathrm{V}(k)), &\quad k=0,1,...,N-1\\
 &x_0(k+1) - x(k+1) \leq Mu_\mathrm{v}(k), &\quad k=0,1,...,N-1\\
