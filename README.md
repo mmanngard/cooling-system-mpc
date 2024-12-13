@@ -12,7 +12,7 @@ To design a near-optimal control strategy, we employ a Model-Predictive Control 
 This section outlines a simplified first-principles model of the CHP cooling system. The radiator dynamics have been neglected, and heat storage in the components has been significantly simplified to create a more manageable model suitable for demonstrating the MPC control strategy.
 
 ### Radiator
-The radiator extracts heat form the system and is assumed to be controlled with signal `$u_\mathrm{R}(t)\in[0,1]`$ sich that `$\dot{Q}_R = Q_{\mathrm{R,max}}u_R(t)`$ and the dynamics is given by
+The radiator extracts heat form the system and is assumed to be controlled with signal $`u_\mathrm{R}(t)\in[0,1]`$ sich that $`\dot{Q}_R = Q_{\mathrm{R,max}}u_R(t)`$ and the dynamics is given by
 
 $`
 c_\mathrm{p}M_\mathrm{R}\dot{T}_\mathrm{R} = c_\mathrm{p}\dot{m}T - c_\mathrm{p}\dot{m}T_\mathrm{R} - \dot{Q}_\mathrm{R},
