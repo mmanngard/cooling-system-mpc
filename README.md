@@ -219,4 +219,5 @@ $`
 & x(k) \in [l, u], &\quad k=0,1,...,N-1\\
 \end{align*}
 `$
+
 However, conventional solvers typically don't accept conditional statements as constraints. Thus, the conditional constraint is rewritten as
