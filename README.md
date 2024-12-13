@@ -203,13 +203,13 @@ x(k+1) =
 \end{cases}
 `$
 
-with
+where $\Delta T$ is the sampling time such that $x(t) = x(k\Delta T)$ for $k=0,1,...,N$, and
 
 $$
-A_{\mathrm{d},i} = \mathrm{e}^{A_i\Delta T},~B_{\mathrm{d},i} = A_{i}^{-1}(A_{i,\mathrm{d}} - I)B.
+A_{\mathrm{d},i} = \mathrm{e}^{A_i\Delta T},~B_{\mathrm{d},i} = A_{i}^{-1}(A_{i,\mathrm{d}} - I)B,~F_{\mathrm{d},i} = A_{i}^{-1}(A_{i,\mathrm{d}} - I)F.
 $$
 
-> :warning: **NOTE** *Verify this!*   
+> :warning: **NOTE** Verify this! 
 
 ## Optimization problem
 Ideally we would formulate the MPC optimization something like the following:
