@@ -9,7 +9,7 @@ Refer to the readme on the upper folder.
 
 Original model, made by mmanngard.
 
-### "CoolingSystemR2024a_modified" and "...modified_IO"
+### "CoolingSystemR2024a_modified" and "CoolingSystemR2024a_modified_IO"
 
 Modified versions of the Simulink model of CoolingSystem that can be exported as an FMU.
 
@@ -19,7 +19,7 @@ Changes made:
 - Changed the solver to fixed time ode1be with a step-size of 0.001
 - Added variable for the temperature setpoint
 
-For "...modified_IO" in addittion:
+For "CoolingSystemR2024a_modified_IO" in addittion:
 - Fixed issue, where radiator took engines Mass
 - Routed all the inputs and outputs for the FMU
 
