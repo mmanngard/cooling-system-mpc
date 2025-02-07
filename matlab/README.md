@@ -43,7 +43,7 @@ The FMU folder contains:
 - FMU tested on simulink, providing similar results than the model
 - The model_description structure is a little bit weird and needs some work on the models side
 
-** Inputs, Outputs and parameters **
+**Inputs, Outputs and parameters**
 - Inputs:
     - `T_in`: Incoming temperature (cold water?) 
     - `Setpoint_temp`: Setpoint sent to controller
@@ -69,7 +69,7 @@ The FMU folder contains:
 ### CoolingSystem_minimal.FMU
 - Same as above, just with fewer outputs, only the ones moving out of the system
 
-** Inputs, Outputs and parameters **
+**Inputs, Outputs and parameters**
 - Inputs:
     - `T_in`: Incoming temperature (cold water?) 
     - `Setpoint_temp`: Setpoint sent to controller
