@@ -37,13 +37,13 @@ The FMU folder contains:
 
 :warning: **NOTE** These are exported with MATLABs ow export tool, will not work with Appros. FMIkit versions to be done.
 
-**CoolingSystem.FMU**
+### CoolingSystem.FMU
 - Made from "CoolingSystemR2024a_modified_IO" model
 - Full model that contains everything
 - FMU tested on simulink, providing similar results than the model
 - The model_description structure is a little bit weird and needs some work on the models side
 
-*** Inputs, Outputs and parameters ***
+** Inputs, Outputs and parameters **
 - Inputs:
     - `T_in`: Incoming temperature (cold water?) 
     - `Setpoint_temp`: Setpoint sent to controller
@@ -66,10 +66,10 @@ The FMU folder contains:
 
 :warning: **NOTE** To be validated 
 
-**CoolingSystem_minimal.FMU**
+### CoolingSystem_minimal.FMU
 - Same as above, just with fewer outputs, only the ones moving out of the system
 
-*** Inputs, Outputs and parameters ***
+** Inputs, Outputs and parameters **
 - Inputs:
     - `T_in`: Incoming temperature (cold water?) 
     - `Setpoint_temp`: Setpoint sent to controller
@@ -86,18 +86,18 @@ The FMU folder contains:
 
 :warning: **NOTE** To be validated 
     
-**CoolingSystem_woControl.FMU**
+### CoolingSystem_woControl.FMU
 - The system without controller
 - Tested only with FMU checker and FMPY.gui that it runs
 - Made from "CoolingSystemR2024a_modified_IO" model
 
-**CoolingSystem_PIcontrol.FMU**
+### CoolingSystem_PIcontrol.FMU
 - The original PI-controller, including the relay
 - changed the output T_out in original model to T_in to describe it is an input for the controller
 - Tested only with FMU checker and FMPY.gui that it works as expected with input values
 - Made from "CoolingSystemR2024a_modified_IO" model
 
-**FMU/Components**
+### FMU/Components
 - Folder contains all the components of the cooling system exported as FMUs
 - Component description and connections can be found on the readme at the folder
 
