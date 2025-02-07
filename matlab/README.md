@@ -97,9 +97,9 @@ The FMU folder contains:
 - Tested only with FMU checker and FMPY.gui that it works as expected with input values
 - Made from "CoolingSystemR2024a_modified_IO" model
 
-**Components**
+**FMU/Components**
 - Folder contains all the components of the cooling system exported as FMUs
-- Component description can be found on the readme at the folder
+- Component description and connections can be found on the readme at the folder
 
 
 
