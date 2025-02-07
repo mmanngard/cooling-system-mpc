@@ -5,11 +5,11 @@ Refer to the readme on the upper folder.
 
 ## Simulink models
 
-### CoolingSystem, CoolingSystemR2024a and CoolingSystemR2023a
+### *CoolingSystem*, *CoolingSystemR2024a* and *CoolingSystemR2023a*
 
 Original model, made by mmanngard.
 
-### CoolingSystemR2024a_modified and CoolingSystemR2024a_modified_IO
+### *CoolingSystemR2024a_modified* and *CoolingSystemR2024a_modified_IO*
 
 Modified versions of the Simulink model of CoolingSystem that can be exported as an FMU.
 
@@ -25,7 +25,7 @@ For "CoolingSystemR2024a_modified_IO" in addittion:
 
 With these changes the model has been "verified" to work similar to the original model.
 
-### CoolingSystemR2024a_Control and CoolingSystemR2024a_woControl
+### *CoolingSystemR2024a_Control* and *CoolingSystemR2024a_woControl*
 
 The physical system and the control system separated. Same as with the LOC-model. 
 
@@ -37,7 +37,7 @@ The FMU folder contains:
 
 :warning: **NOTE** These are exported with MATLABs ow export tool, will not work with Appros. FMIkit versions to be done.
 
-### CoolingSystem.FMU
+### *CoolingSystem.FMU*
 - Made from "CoolingSystemR2024a_modified_IO" model
 - Full model that contains everything
 - FMU tested on simulink, providing similar results than the model
@@ -66,7 +66,7 @@ The FMU folder contains:
 
 :warning: **NOTE** To be validated 
 
-### CoolingSystem_minimal.FMU
+### *CoolingSystem_minimal.FMU*
 - Same as above, just with fewer outputs, only the ones moving out of the system
 
 **Inputs, Outputs and parameters**
@@ -86,12 +86,12 @@ The FMU folder contains:
 
 :warning: **NOTE** To be validated 
     
-### CoolingSystem_woControl.FMU
+### *CoolingSystem_woControl.FMU*
 - The system without controller
 - Tested only with FMU checker and FMPY.gui that it runs
 - Made from "CoolingSystemR2024a_modified_IO" model
 
-### CoolingSystem_PIcontrol.FMU
+### *CoolingSystem_PIcontrol.FMU*
 - The original PI-controller, including the relay
 - changed the output T_out in original model to T_in to describe it is an input for the controller
 - Tested only with FMU checker and FMPY.gui that it works as expected with input values
