@@ -7,7 +7,8 @@ All the sub-components that build up the cooling system.
 
 ## Connections between variables
 
-Picture here.
+<img width="666" alt="Connections" src="https://github.com/user-attachments/assets/e15b2e26-2727-4089-a98a-94f9ded0a4c6" />
+
 
 ### Boiler
 - To be done
