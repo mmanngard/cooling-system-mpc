@@ -5,11 +5,11 @@ Refer to the readme on the upper folder.
 
 ## Simulink models
 
-### "CoolingSystem", "CoolingSystemR2024a" and "CoolingSystemR2023a"
+### CoolingSystem, CoolingSystemR2024a and CoolingSystemR2023a
 
 Original model, made by mmanngard.
 
-### "CoolingSystemR2024a_modified" and "CoolingSystemR2024a_modified_IO"
+### CoolingSystemR2024a_modified and CoolingSystemR2024a_modified_IO
 
 Modified versions of the Simulink model of CoolingSystem that can be exported as an FMU.
 
@@ -25,7 +25,7 @@ For "CoolingSystemR2024a_modified_IO" in addittion:
 
 With these changes the model has been "verified" to work similar to the original model.
 
-### "CoolingSystemR2024a_Control" and "CoolingSystemR2024a_woControl"
+### CoolingSystemR2024a_Control and CoolingSystemR2024a_woControl
 
 The physical system and the control system separated. Same as with the LOC-model. 
 
